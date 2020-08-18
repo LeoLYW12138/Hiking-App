@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_round_home_24"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_trails"
+        android:icon="@drawable/ic_round_terrain_24"
+        android:title="@string/title_trails" />
+
+    <item
+        android:id="@+id/navigation_target"
+        android:icon="@drawable/ic_round_view_list_24"
+        android:title="@string/title_target" />
+    <item
+        android:id="@+id/navigation_weather"
+        android:icon="@drawable/ic_round_weather_24"
+        android:title="@string/title_weather" />
+
+</menu>

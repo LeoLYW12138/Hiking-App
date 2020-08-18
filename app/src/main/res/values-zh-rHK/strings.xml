@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">行在香港</string>
+    <string name="title_home">主頁</string>
+    <string name="title_trails">路徑</string>
+    <string name="title_target">目標</string>
+    <string name="title_weather">天氣</string>
+    <string name="bar_settings">設定</string>
+    <string name="bar_about">關於</string>
+    <string name="bar_how_to">使用教學</string>
+    <string name="warning_wheel">是日火災警告</string>
+    <string name="title_wWarning">天氣警告</string>
+    <string name="title_astro">天文資訊</string>
+</resources>
