@@ -17,10 +17,11 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.threeten.bp.OffsetDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import me.darkb.HikingApp.WeatherReport;
+import retrofit2.Retrofit;
 
 public class WeatherViewModel extends AndroidViewModel {
 
@@ -43,10 +44,17 @@ public class WeatherViewModel extends AndroidViewModel {
         uv = new MutableLiveData<>();
         rain = new MutableLiveData<>();
         updateTime = new MutableLiveData<>();
-        loadWeather();
+//        loadWeather();
+        loadWeatherApi();
     }
 
+    private WeatherReport loadWeatherApi() {
+
+    }
+
+
     private void loadWeather() {
+        Log.i("Weather", "Performed loadWeather once");
         String WEATHERURL = "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=en";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, WEATHERURL, null, new Response.Listener<JSONObject>() {
             @Override
@@ -61,11 +69,11 @@ public class WeatherViewModel extends AndroidViewModel {
                     JSONObject rainfall = response.getJSONObject("rainfall").getJSONArray("data").getJSONObject(0);
                     rain.setValue(String.format("%dmm", rainfall.getInt("max")));
                     String time = response.getString("updateTime");
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = format.parse(time);
-                    Log.d("test", date.toString());
-                    updateTime.setValue("Last update time: " + date.toString());
-                } catch (JSONException | ParseException e) {
+                    OffsetDateTime offsetTime = OffsetDateTime.parse(time);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                    time = offsetTime.format(formatter);
+                    updateTime.setValue(String.format("Last update time: %s", time));
+                } catch (JSONException e) {
                     Log.e("weather", e.getMessage(), e);
                 }
             }
