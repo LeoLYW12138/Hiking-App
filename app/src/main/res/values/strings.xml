@@ -11,4 +11,16 @@
     <string name="last_update">Last Update Time: 2020–8–21 13:02</string>
     <string name="title_wWarning">Weather Warnings</string>
     <string name="title_astro">Astro Data</string>
+    <string name="trail_difficulty">Difficulty:</string>
+    <string name="recommended_trails">Recommended trails</string>
+    <string name="important_tips">Important tips</string>
+    <string name="tips">
+        1. Walk with the entire soles of your boots touching the ground, to spread the load evenly across your feet.\n\n
+        2. Free your hands or hold a walking stick to assist balance.\n\n
+        3. Maintain a steady and natural pace, and one that suits you.\n\n
+        4. Plan to end your hike two hours before sunset.\n\n
+        5. Never drink untreated water from hill streams or eat any wild plants or mushrooms.\n\n
+        6. Trim your toenails, and try to keep your feet clean and dry. Stop walking if your feet are uncomfortable. Inspect them and treat any wounds promptly.
+    </string>
+    <string name="more_tips">Get more tips on AFCD\'s website</string>
 </resources>

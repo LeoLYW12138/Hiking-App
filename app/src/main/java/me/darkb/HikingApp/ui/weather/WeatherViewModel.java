@@ -20,36 +20,44 @@ import org.json.JSONObject;
 import org.threeten.bp.OffsetDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 
-import me.darkb.HikingApp.WeatherReport;
-import retrofit2.Retrofit;
+import java.util.Date;
+
+import me.darkb.HikingApp.data.Repository;
+import me.darkb.HikingApp.data.WeatherReport;
 
 public class WeatherViewModel extends AndroidViewModel {
 
-    private MutableLiveData<String> mText;
+    private static final String TAG = "WeatherViewModel";
     private MutableLiveData<String> temp;
     private MutableLiveData<String> humid;
     private MutableLiveData<String> uv;
     private MutableLiveData<String> rain;
     private MutableLiveData<String> updateTime;
     private RequestQueue requestQueue;
+    private Repository repository;
 
     public WeatherViewModel(Application application) {
         super(application);
         Context context = getApplication().getApplicationContext();
         requestQueue = Volley.newRequestQueue(context);
-        mText = new MutableLiveData<>();
-        mText.setValue("This is weather fragment");
         temp = new MutableLiveData<>();
         humid = new MutableLiveData<>();
         uv = new MutableLiveData<>();
         rain = new MutableLiveData<>();
         updateTime = new MutableLiveData<>();
 //        loadWeather();
+        this.repository = new Repository();
         loadWeatherApi();
     }
 
-    private WeatherReport loadWeatherApi() {
-
+    public void loadWeatherApi() {
+        WeatherReport weatherReport = repository.getWeatherReport();
+        Log.d(TAG, weatherReport.toString());
+        temp.setValue(String.format("%d°C", weatherReport.getMain().getFeelsLike()));
+        humid.setValue(String.format("%d%%", weatherReport.getMain().getHumidity()));
+        updateTime.setValue(new Date(weatherReport.getTime() * 1000).toString());
+        uv.setValue("10 (High)");
+        rain.setValue("0mm");
     }
 
 
@@ -74,13 +82,13 @@ public class WeatherViewModel extends AndroidViewModel {
                     time = offsetTime.format(formatter);
                     updateTime.setValue(String.format("Last update time: %s", time));
                 } catch (JSONException e) {
-                    Log.e("weather", e.getMessage(), e);
+                    Log.e(TAG, e.getMessage(), e);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("weather", "weather request error", error);
+                Log.e(TAG, "weather request error", error);
             }
         });
         requestQueue.add(request);
@@ -112,13 +120,9 @@ public class WeatherViewModel extends AndroidViewModel {
                     return String.valueOf(uvi);
             }
         } catch (JSONException e) {
-            Log.e("weather", "parseUv error", e);
+            Log.e(TAG, "parseUv error", e);
         }
         return "0 (Low)";
-    }
-
-    public LiveData<String> getText() {
-        return mText;
     }
 
     public LiveData<String> getTemp() {

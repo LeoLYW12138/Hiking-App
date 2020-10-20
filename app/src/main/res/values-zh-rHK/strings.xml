@@ -11,4 +11,16 @@
     <string name="warning_wheel">是日火災警告</string>
     <string name="title_wWarning">天氣警告</string>
     <string name="title_astro">天文資訊</string>
+    <string name="trail_difficulty">難度:</string>
+    <string name="important_tips">重要貼士</string>
+    <string name="recommended_trails">推廌行山徑</string>
+    <string name="more_tips">在漁農署網站獲得更多貼士</string>
+    <string name="tips">
+        1. 步行時，整個腳板應接觸地面。\n\n
+        2. 必須空出雙手或持手杖幫助身體平衡。\n\n
+        3. 步伐要自然，不可時快時慢。\n\n
+        4. 每天的旅程宜於日落前兩小時完成。\n\n
+        5. 不可飲用未經消毒之溪水或食用野生植物或野菇。\n\n
+        6. 腳甲要剪短，並須保持足部清潔乾爽。如發覺足部不適，應立即停止前進，檢查及處理傷患處。
+    </string>
 </resources>

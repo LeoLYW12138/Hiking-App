@@ -1,32 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:elevation="4dp"
+    android:fillViewport="true">
 
-    <com.synnapps.carouselview.CarouselView
-        android:id="@+id/carouselHero"
-        android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:layout_marginBottom="292dp"
-        app:fillColor="#FFFFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/text_home"
-        app:layout_constraintTop_toTopOf="parent"
-        app:pageColor="#00000000"
-        app:radius="6dp"
-        app:slideInterval="3000" />
-
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/carouselHero" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:paddingHorizontal="@dimen/activity_horizontal_margin"
+        tools:context=".ui.home.HomeFragment">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/welcome_card"
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            app:layout_constraintBottom_toTopOf="@+id/carouselHero"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:textSize="40sp"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="@id/welcome_card"
+            app:layout_constraintEnd_toEndOf="@id/welcome_card"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="@id/welcome_card"
+            app:layout_constraintTop_toTopOf="@id/welcome_card"
+            app:layout_constraintVertical_bias="0.15" />
+
+        <TextView
+            android:id="@+id/recommended_trails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:text="@string/recommended_trails"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_card" />
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carouselHero"
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            android:layout_marginBottom="292dp"
+            app:fillColor="#FFFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/important_tips"
+            app:layout_constraintTop_toBottomOf="@+id/recommended_trails"
+            app:pageColor="#00000000"
+            app:radius="6dp"
+            app:slideInterval="3000" />
+
+        <TextView
+            android:id="@+id/important_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:text="@string/important_tips"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carouselHero" />
+
+        <TextView
+            android:id="@+id/text_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginVertical="5dp"
+            android:text="@string/tips"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/important_tips" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:text="@string/more_tips"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:drawablePadding="5dp"
+            app:drawableEndCompat="@drawable/ic_link"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_tips" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
