@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import me.darkb.HikingApp.R;
 
@@ -21,7 +21,7 @@ public class TargetFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         targetViewModel =
-                ViewModelProviders.of(this).get(TargetViewModel.class);
+                new ViewModelProvider(this).get(TargetViewModel.class);
         View root = inflater.inflate(R.layout.fragment_target, container, false);
         final TextView textView = root.findViewById(R.id.text_target);
         targetViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
