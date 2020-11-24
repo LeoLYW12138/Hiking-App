@@ -16,6 +16,7 @@ public class TrailsFragment extends Fragment {
 
     private TrailsViewModel trailsViewModel;
     private RecyclerView recyclerView;
+    private TrailsAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class TrailsFragment extends Fragment {
 //            }
 //        });
         recyclerView = view.findViewById(R.id.trails_recycler_view);
+        adapter = new TrailsAdapter();
+        recyclerView.setAdapter(adapter);
         return view;
     }
 }

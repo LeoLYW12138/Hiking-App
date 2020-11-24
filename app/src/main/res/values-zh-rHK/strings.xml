@@ -23,4 +23,10 @@
         5. 不可飲用未經消毒之溪水或食用野生植物或野菇。\n\n
         6. 腳甲要剪短，並須保持足部清潔乾爽。如發覺足部不適，應立即停止前進，檢查及處理傷患處。
     </string>
+    <string name="trail_length">長度:</string>
+    <string name="trail_duration">時間:</string>
+    <string name="trail_region">地區:</string>
+    <string name="get_there">點樣去?</string>
+    <string name="start_point">前往</string>
+    <string name="end_point">離開</string>
 </resources>

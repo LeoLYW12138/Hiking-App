@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_trail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/trail_img"
+        android:id="@+id/trail_item_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -17,18 +18,18 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/trail_title"
+        android:id="@+id/trail_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Trail - where"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/trail_img"
+        app:layout_constraintStart_toEndOf="@+id/trail_item_img"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/trail_subtitle"
+        android:id="@+id/trail_item_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -36,22 +37,22 @@
         android:text="A Part of ---- Trail"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/difficulty"
-        app:layout_constraintStart_toEndOf="@+id/trail_img"
-        app:layout_constraintTop_toBottomOf="@+id/trail_title" />
+        app:layout_constraintStart_toEndOf="@+id/trail_item_img"
+        app:layout_constraintTop_toBottomOf="@+id/trail_item_title" />
 
     <TextView
-        android:id="@+id/difficulty"
+        android:id="@+id/trail_item_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="@string/trail_difficulty"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/trail_img"
-        app:layout_constraintTop_toBottomOf="@+id/trail_subtitle" />
+        app:layout_constraintStart_toEndOf="@+id/trail_item_img"
+        app:layout_constraintTop_toBottomOf="@+id/trail_item_subtitle" />
 
     <RatingBar
-        android:id="@+id/rating"
+        android:id="@+id/trail_item_rating"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,7 +60,7 @@
         android:numStars="5"
         android:rating="2.5"
         android:stepSize="0.5"
-        app:layout_constraintStart_toEndOf="@+id/trail_img"
+        app:layout_constraintStart_toEndOf="@+id/trail_item_img"
         app:layout_constraintTop_toBottomOf="@+id/difficulty" />
 
     <HorizontalScrollView
@@ -67,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/trail_img"
+        app:layout_constraintStart_toEndOf="@+id/trail_item_img"
         app:layout_constraintTop_toBottomOf="@+id/rating">
 
         <com.google.android.material.chip.ChipGroup

@@ -11,7 +11,6 @@
     <string name="last_update">Last Update Time: 2020–8–21 13:02</string>
     <string name="title_wWarning">Weather Warnings</string>
     <string name="title_astro">Astro Data</string>
-    <string name="trail_difficulty">Difficulty:</string>
     <string name="recommended_trails">Recommended trails</string>
     <string name="important_tips">Important tips</string>
     <string name="tips">
@@ -23,4 +22,11 @@
         6. Trim your toenails, and try to keep your feet clean and dry. Stop walking if your feet are uncomfortable. Inspect them and treat any wounds promptly.
     </string>
     <string name="more_tips">Get more tips on AFCD\'s website</string>
+    <string name="trail_difficulty">Difficulty:</string>
+    <string name="trail_length">Length:</string>
+    <string name="trail_duration">Duration:</string>
+    <string name="trail_region">Region:</string>
+    <string name="get_there">How to get there?</string>
+    <string name="start_point">Start Point:</string>
+    <string name="end_point">End Point:</string>
 </resources>
