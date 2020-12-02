@@ -10,14 +10,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/activity_horizontal_margin">
+        android:paddingHorizontal="@dimen/activity_horizontal_margin"
+        android:paddingVertical="@dimen/activity_vertical_margin">
 
         <ImageView
             android:id="@+id/view_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:paddingTop="16dp"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -58,8 +59,9 @@
                 android:layout_height="35dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:gravity="center_vertical"
                 android:text="@string/trail_difficulty"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,10 +69,18 @@
                 android:id="@+id/trail_rating"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:paddingTop="4sp"
                 android:layout_toEndOf="@id/trail_difficulty"
+                android:numStars="5"
+                android:progressTint="#FFCC01"
+                android:rating="3.5"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
                 android:stepSize="0.5"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
                 app:layout_constraintBaseline_toBaselineOf="@id/trail_difficulty"
                 app:layout_constraintStart_toStartOf="@+id/details_guideline" />
 
@@ -82,7 +92,7 @@
                 android:layout_alignParentStart="true"
                 android:paddingTop="8dp"
                 android:text="@string/trail_length"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/trail_difficulty" />
 
@@ -94,7 +104,7 @@
                 android:layout_toEndOf="@id/trail_length"
                 android:paddingTop="8dp"
                 android:text="7.5km"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@id/trail_length"
                 app:layout_constraintStart_toStartOf="@+id/details_guideline" />
@@ -107,7 +117,7 @@
                 android:layout_alignParentStart="true"
                 android:paddingTop="8dp"
                 android:text="@string/trail_duration"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/trail_length" />
 
@@ -119,7 +129,7 @@
                 android:layout_toEndOf="@id/trail_duration"
                 android:paddingTop="8dp"
                 android:text="2 hours"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@id/trail_duration"
                 app:layout_constraintStart_toStartOf="@+id/details_guideline" />
@@ -132,7 +142,7 @@
                 android:layout_alignParentStart="true"
                 android:paddingTop="8dp"
                 android:text="@string/trail_region"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/trail_duration" />
 
@@ -144,7 +154,7 @@
                 android:layout_toEndOf="@id/trail_region"
                 android:paddingTop="8dp"
                 android:text="Hong Kong Island"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@id/trail_region"
                 app:layout_constraintStart_toStartOf="@+id/details_guideline" />
@@ -154,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="145dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="66dp"
+                app:layout_constraintGuide_begin="100dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -175,7 +185,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="8dp"
+            android:padding="16dp"
             android:background="#54F677"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -196,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/start_point"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:text='Take public transport to "Wan Chai Gap Road" bus stop. Pass Wan Chai Gap Park and walk along Aberdeen Reservoir Road for about 15 minutes to the start point.  New World First Bus (NWFB) routes - 15 and 15B' />
         </RelativeLayout>
 
@@ -205,7 +215,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="8dp"
+            android:padding="16dp"
             android:background="#FF6464"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -226,7 +236,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/end_point"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:text="Take public transport from Wong Nai Chung Gap.  Citybus routes - 6, 41A and 76" />
         </RelativeLayout>
 

@@ -1,28 +1,30 @@
 package me.darkb.HikingApp.data;
 
-import android.graphics.drawable.Drawable;
+import java.io.Serializable;
 
-public class Trail {
-    private Integer id;
-    private Drawable img;
+public class Trail implements Serializable {
+    private Integer img;
     private String title;
     private String subtitle;
-    private Integer difficulty;
-    private Float rating;
+    private Float difficulty;
+    private Integer rating;
+    private Float length;
+    private Float duration;
+    private String region;
 
-    Trail(Drawable trail_img, String trail_title, String trail_subtitle, Integer trail_difficulty, Float trail_rating){
+    public Trail(Integer trail_img, String trail_title, String trail_subtitle, Float trail_difficulty,
+                 Integer trail_rating, Float length, Float duration, String region) {
         this.img = trail_img;
         this.title = trail_title;
         this.subtitle = trail_subtitle;
         this.difficulty = trail_difficulty;
         this.rating = trail_rating;
+        this.length = length;
+        this.duration = duration;
+        this.region = region;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public Drawable getImg() {
+    public Integer getImg() {
         return img;
     }
 
@@ -34,11 +36,23 @@ public class Trail {
         return subtitle;
     }
 
-    public Integer getDifficulty() {
+    public Float getDifficulty() {
         return difficulty;
     }
 
-    public Float getRating() {
+    public Integer getRating() {
         return rating;
+    }
+
+    public Float getLength() {
+        return length;
+    }
+
+    public Float getDuration() {
+        return duration;
+    }
+
+    public String getRegion() {
+        return region;
     }
 }

@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_trail"
+    android:id="@+id/trail_item"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <ImageView
-        android:id="@+id/trail_item_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/trail_item_img"
+            android:layout_width="156dp"
+            android:layout_height="128dp"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/trail_item_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Trail - where"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/trail_item_img"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/trail_item_subtitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="8dp"
         android:text="A Part of ---- Trail"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/difficulty"
+        app:layout_constraintBottom_toTopOf="@+id/trail_item_difficulty_text"
         app:layout_constraintStart_toEndOf="@+id/trail_item_img"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/trail_item_title" />
 
     <TextView
-        android:id="@+id/trail_item_difficulty"
+        android:id="@+id/trail_item_difficulty_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -52,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/trail_item_subtitle" />
 
     <RatingBar
-        android:id="@+id/trail_item_rating"
+        android:id="@+id/trail_item_difficulty"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,27 +72,31 @@
         android:numStars="5"
         android:rating="2.5"
         android:stepSize="0.5"
+        android:progressTint="#FFCC01"
         app:layout_constraintStart_toEndOf="@+id/trail_item_img"
-        app:layout_constraintTop_toBottomOf="@+id/difficulty" />
+        app:layout_constraintTop_toBottomOf="@+id/trail_item_difficulty_text" />
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/trail_item_img"
-        app:layout_constraintTop_toBottomOf="@+id/rating">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingTop="5dp"
             android:layout_marginStart="24dp"
-            app:chipSpacingHorizontal="20dp"
-            app:singleLine="true">
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/trail_item_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trail_item_difficulty">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip1"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:singleLine="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -100,16 +116,26 @@
                 android:textSize="15sp"
                 app:chipBackgroundColor="@color/colorTag2" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Covered"
-                android:textAlignment="center"
-                android:textSize="15sp"
-                app:chipBackgroundColor="@color/colorTag3" />
-        </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Covered"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:chipBackgroundColor="@color/colorTag3" />
 
-    </HorizontalScrollView>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="chip4"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:chipBackgroundColor="@color/colorTag1" />
+            </com.google.android.material.chip.ChipGroup>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </HorizontalScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

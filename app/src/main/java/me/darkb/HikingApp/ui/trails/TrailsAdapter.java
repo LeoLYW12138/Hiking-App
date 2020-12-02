@@ -1,15 +1,16 @@
 package me.darkb.HikingApp.ui.trails;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -19,46 +20,47 @@ import me.darkb.HikingApp.R;
 import me.darkb.HikingApp.data.Trail;
 
 public class TrailsAdapter extends RecyclerView.Adapter<TrailsAdapter.TrailsViewHolder> {
+    private List<Trail> trails = new ArrayList<>();
+
     public static class TrailsViewHolder extends RecyclerView.ViewHolder {
         public ImageView trailImg;
         public TextView trailTitle;
         public TextView trailSubtitle;
-        public TextView trailDifficulty;
         public RatingBar trailRating;
 
-        public ConstraintLayout containerView;
+        public LinearLayout containerView;
 
         public TrailsViewHolder(View v) {
             super(v);
 
-            containerView = v.findViewById(R.id.item_trail);
+            containerView = v.findViewById(R.id.trail_item);
             trailImg = v.findViewById(R.id.trail_item_img);
             trailTitle = v.findViewById(R.id.trail_item_title);
             trailSubtitle = v.findViewById(R.id.trail_item_subtitle);
-            trailDifficulty = v.findViewById(R.id.trail_item_difficulty);
-            trailRating = v.findViewById(R.id.trail_item_rating);
+            trailRating = v.findViewById(R.id.trail_item_difficulty);
 
-            containerView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Trail current = (Trail) containerView.getTag();
-                    Intent intent = new Intent(view.getContext(), TrailActivity.class);
-                    intent.putExtra("id", current.getId());
+            containerView.setOnClickListener(view -> {
+                Trail current = (Trail) containerView.getTag();
+                Intent intent = new Intent(view.getContext(), TrailActivity.class);
+                intent.putExtra("trail", current);
 
-                    view.getContext().startActivity(intent);
-                }
+                view.getContext().startActivity(intent);
             });
         }
+
     }
 
-    private List<Trail> trails = new ArrayList<>();
-
-    TrailsAdapter(){
+    TrailsAdapter() {
         loadTrails();
     }
 
     private void loadTrails() {
-        trails.add(new Trail());
+        trails.add(new Trail(R.drawable.aberdeen_country_park, "Aberdeen natural trail - Hong Kong Island", "Hong Kong Trail", 1.0f, 3, 1.2f, 1.0f, "Hong Kong Island"));
+        trails.add(new Trail(R.drawable.amah_rock, "Hung Mui Kuk Natural Trail - Central New Territories", "Wilson Trail", 1.0f, 3, 1.3f, 1.0f, "Central New Territories"));
+        trails.add(new Trail(R.drawable.grassy_hill, "MacLehose Trail (Section 7) - Central New Territories", "MacLehose Trail", 3.0f, 2, 6.2f, 2.5f, "Central New Territories"));
+        trails.add(new Trail(R.drawable.lai_chi_wo, "Lai Chi Wo Natural Trail - North New Territories", "Natural Trail", 1.0f, 5, 1.2f, 1.0f, "North New Territories"));
+        Log.d("TrailAdapter", "loaded trails");
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -73,11 +75,10 @@ public class TrailsAdapter extends RecyclerView.Adapter<TrailsAdapter.TrailsView
     public void onBindViewHolder(@NonNull TrailsViewHolder holder, int position) {
         Trail current;
         current = trails.get(position);
-        holder.trailImg.setImageDrawable(current.getImg());
+        holder.trailImg.setImageResource(current.getImg());
         holder.trailTitle.setText(current.getTitle());
         holder.trailSubtitle.setText(current.getSubtitle());
-        holder.trailDifficulty.setText(String.valueOf(current.getDifficulty()));
-        holder.trailRating.setRating(current.getRating());
+        holder.trailRating.setRating(current.getDifficulty());
         holder.containerView.setTag(current);
     }
 
