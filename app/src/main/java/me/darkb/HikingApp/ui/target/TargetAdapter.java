@@ -36,7 +36,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
 
             containerView = v.findViewById(R.id.target_item);
             targetTitle = v.findViewById(R.id.target_item_title);
-            targetRating = v.findViewById(R.id.target_item_difficulty);
+//            targetRating = v.findViewById(R.id.target_item_difficulty);
             simpleRatingBar = v.findViewById(R.id.simple_rating_bar);
 
             containerView.setOnClickListener(view -> {
@@ -72,7 +72,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
         Trail current;
         current = targets.get(position);
         holder.targetTitle.setText(current.getTitle());
-        holder.targetRating.setRating(current.getDifficulty());
+//        holder.targetRating.setRating(current.getDifficulty());
         holder.simpleRatingBar.setRating(current.getDifficulty());
         holder.containerView.setTag(current);
     }

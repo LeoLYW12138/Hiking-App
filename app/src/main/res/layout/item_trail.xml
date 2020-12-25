@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/trail_item_img"
             android:layout_width="156dp"
-            android:layout_height="128dp"
+            android:layout_height="0dp"
             android:layout_margin="5dp"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
@@ -63,18 +63,20 @@
         app:layout_constraintStart_toEndOf="@+id/trail_item_img"
         app:layout_constraintTop_toBottomOf="@+id/trail_item_subtitle" />
 
-    <RatingBar
-        android:id="@+id/trail_item_difficulty"
-        style="?android:attr/ratingBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:numStars="5"
-        android:rating="2.5"
-        android:stepSize="0.5"
-        android:progressTint="#FFCC01"
-        app:layout_constraintStart_toEndOf="@+id/trail_item_img"
-        app:layout_constraintTop_toBottomOf="@+id/trail_item_difficulty_text" />
+        <com.iarcuschin.simpleratingbar.SimpleRatingBar
+            android:id="@+id/trail_item_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="24dp"
+            app:srb_starSize="16dp"
+            app:srb_numberOfStars="5"
+            app:srb_rating="3.5"
+            app:srb_stepSize="0.5"
+            app:srb_borderColor="@color/colorStar"
+            app:srb_fillColor="@color/colorStar"
+            app:layout_constraintTop_toBottomOf="@+id/trail_item_difficulty_text"
+            app:layout_constraintStart_toEndOf="@+id/trail_item_img" />
 
         <HorizontalScrollView
             android:layout_width="0dp"

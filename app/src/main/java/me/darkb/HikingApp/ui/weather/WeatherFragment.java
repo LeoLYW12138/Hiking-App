@@ -23,7 +23,7 @@ public class WeatherFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         Context context = getContext();
         weatherViewModel = new ViewModelProvider(this).get(WeatherViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_temp, container, false);
+        View root = inflater.inflate(R.layout.fragment_weather, container, false);
 
         final TextView temp = root.findViewById(R.id.temp);
         weatherViewModel.getTemp().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -58,6 +58,48 @@ public class WeatherFragment extends Fragment {
             @Override
             public void onChanged(@Nullable String s) {
                 last_update.setText(s);
+            }
+        });
+        final TextView warningInfo = root.findViewById(R.id.warning_info);
+        weatherViewModel.getWarningInfo().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                warningInfo.setText(s);
+            }
+        });
+        final TextView sunrise = root.findViewById(R.id.sunrise);
+        weatherViewModel.getSunrise().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                sunrise.setText(s);
+            }
+        });
+        final TextView sunset = root.findViewById(R.id.sunset);
+        weatherViewModel.getSunset().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                sunset.setText(s);
+            }
+        });
+        final TextView moonrise = root.findViewById(R.id.moonrise);
+        weatherViewModel.getMoonrise().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                moonrise.setText(s);
+            }
+        });
+        final TextView moonset = root.findViewById(R.id.moonset);
+        weatherViewModel.getMoonset().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                moonset.setText(s);
+            }
+        });
+        final TextView moonPhrase = root.findViewById(R.id.moon_phrase);
+        weatherViewModel.getMoonPhrase().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                moonPhrase.setText(s);
             }
         });
         return root;

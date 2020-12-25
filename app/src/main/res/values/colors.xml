@@ -4,8 +4,8 @@
     <color name="colorSecondary">#DE7E24</color>
     <color name="colorPrimaryDark">#12449A</color>
     <color name="colorAccent">#24DEDB</color>
-    <color name="colorTag1">#7E24DE</color>
-    <color name="colorTag2">#DE2484</color>
-    <color name="colorTag3">#25E185</color>
-
+    <color name="colorTag1">#9053D1</color>
+    <color name="colorTag2">#E3328D</color>
+    <color name="colorTag3">#40E695</color>
+    <color name="colorStar">#F3CB06</color>
 </resources>

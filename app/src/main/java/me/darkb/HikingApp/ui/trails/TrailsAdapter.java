@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class TrailsAdapter extends RecyclerView.Adapter<TrailsAdapter.TrailsView
         public ImageView trailImg;
         public TextView trailTitle;
         public TextView trailSubtitle;
-        public RatingBar trailRating;
+        public SimpleRatingBar trailRating;
 
         public LinearLayout containerView;
 
