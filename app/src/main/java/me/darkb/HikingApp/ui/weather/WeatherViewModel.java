@@ -28,6 +28,7 @@ import me.darkb.HikingApp.data.WeatherReport;
 public class WeatherViewModel extends AndroidViewModel {
 
     private static final String TAG = "WeatherViewModel";
+    private MutableLiveData<String> fireDanger;
     private MutableLiveData<String> temp;
     private MutableLiveData<String> humid;
     private MutableLiveData<String> uv;
@@ -46,6 +47,7 @@ public class WeatherViewModel extends AndroidViewModel {
         super(application);
         Context context = getApplication().getApplicationContext();
         requestQueue = Volley.newRequestQueue(context);
+        fireDanger = new MutableLiveData<>();
         temp = new MutableLiveData<>();
         humid = new MutableLiveData<>();
         uv = new MutableLiveData<>();
@@ -66,6 +68,18 @@ public class WeatherViewModel extends AndroidViewModel {
 
     private void loadWarning() {
         Log.i("Weather", "Performed loadWarning once");
+        final String WARNINGURL = "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=en";
+        JsonObjectRequest warning_request = new JsonObjectRequest(Request.Method.GET, WARNINGURL, null, response -> {
+            try {
+                JSONObject fire_warning = response.optJSONObject("WFIRE");
+                fireDanger.setValue((fire_warning != null) ? fire_warning.getString("type") : "Green");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        },
+                error -> Log.e(TAG, "warning request error", error));
+        requestQueue.add(warning_request);
     }
 
     private void loadAstro() {
@@ -133,8 +147,16 @@ public class WeatherViewModel extends AndroidViewModel {
                 time = offsetTime.format(formatter);
                 updateTime.setValue(String.format("Last update time: %s", time));
 
-                String warning_msg = response.getString("warningMessage");
-                warningInfo.setValue((warning_msg.equals("")) ? "There is no weather warning currently in force" : warning_msg);
+                JSONArray warning_msg = response.optJSONArray("warningMessage");
+                if (warning_msg != null) {
+                    String msg = "";
+                    for (int i = 0; i < warning_msg.length(); i++) {
+                        msg = msg.concat(warning_msg.getString(i) + '\n');
+                    }
+                    warningInfo.setValue(msg);
+                } else {
+                    warningInfo.setValue("There is no weather warning currently in force");
+                }
             } catch (JSONException e) {
                 Log.e(TAG, e.getMessage(), e);
             }
@@ -171,6 +193,10 @@ public class WeatherViewModel extends AndroidViewModel {
             Log.e(TAG, "parseUv error", e);
         }
         return "0 (Low)";
+    }
+
+    public LiveData<String> getFireDanger() {
+        return fireDanger;
     }
 
     public LiveData<String> getTemp() {

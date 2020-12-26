@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,17 +17,43 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.util.HashMap;
+
 import me.darkb.HikingApp.R;
 
 public class WeatherFragment extends Fragment {
 
     private WeatherViewModel weatherViewModel;
+    private float toAngle;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Context context = getContext();
         weatherViewModel = new ViewModelProvider(this).get(WeatherViewModel.class);
         View root = inflater.inflate(R.layout.fragment_weather, container, false);
+
+        final TextView fire_warning = root.findViewById(R.id.fire_warning);
+        final ImageView arrow = root.findViewById(R.id.arrow);
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        map.put("Green", 0);
+        map.put("Yellow", 1);
+        map.put("Red", 2);
+        weatherViewModel.getFireDanger().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                fire_warning.setText(s);
+                toAngle = map.get(s) * 60f;
+                if (toAngle != -60f) {
+                    RotateAnimation rotateAnimation = new RotateAnimation(0, toAngle, Animation.RELATIVE_TO_SELF, .5f, Animation.RELATIVE_TO_SELF, .98f);
+                    rotateAnimation.setInterpolator(new LinearInterpolator());
+                    rotateAnimation.setDuration(3000);
+                    rotateAnimation.setFillAfter(true);
+                    arrow.setAnimation(rotateAnimation);
+                    arrow.startAnimation(rotateAnimation);
+
+                }
+            }
+        });
 
         final TextView temp = root.findViewById(R.id.temp);
         weatherViewModel.getTemp().observe(getViewLifecycleOwner(), new Observer<String>() {

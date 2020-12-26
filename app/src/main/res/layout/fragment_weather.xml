@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:orientation="vertical"
     android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         tools:context=".ui.weather.WeatherFragment">
 
         <ImageView
@@ -22,9 +22,33 @@
             android:contentDescription="@string/warning_wheel"
             android:src="@drawable/warning_wheel"
             app:layout_constraintDimensionRatio="2:1"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:rotation="-60"
+            android:transformPivotX="20.5dp"
+            android:transformPivotY="108dp"
+            app:layout_constraintStart_toStartOf="@id/warning_wheel"
+            app:layout_constraintEnd_toEndOf="@id/warning_wheel"
+            app:layout_constraintBottom_toBottomOf="@id/warning_wheel" />
+
+        <TextView
+            android:id="@+id/fire_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:elevation="4dp"
+            android:text="Green"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/warning_wheel"
+            app:layout_constraintBottom_toBottomOf="@+id/warning_wheel"
+            app:layout_constraintVertical_bias="0.104" />
 
         <TextView
             android:id="@+id/temp"
@@ -38,10 +62,10 @@
             android:text="28°C – 33°C"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            app:layout_constraintBottom_toTopOf="@id/humid"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/warning_wheel"
+            app:layout_constraintBottom_toTopOf="@id/humid" />
 
         <TextView
             android:id="@+id/humid"
@@ -55,10 +79,10 @@
             android:text="76 – 87%"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            app:layout_constraintBottom_toTopOf="@id/UV"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/temp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/temp"
+            app:layout_constraintBottom_toTopOf="@id/UV" />
 
         <TextView
             android:id="@+id/UV"
@@ -72,10 +96,10 @@
             android:text="12 (Extreme)"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            app:layout_constraintBottom_toTopOf="@id/rain"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/humid" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/humid"
+            app:layout_constraintBottom_toTopOf="@id/rain" />
 
         <TextView
             android:id="@+id/rain"
@@ -89,8 +113,8 @@
             android:text="0mm"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/UV"
             app:layout_constraintBottom_toTopOf="@id/last_update" />
 
@@ -103,24 +127,23 @@
             android:layout_marginBottom="8dp"
             android:text="Last Update Time: "
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintTop_toBottomOf="@id/rain"
-            app:layout_constraintBottom_toTopOf="@id/title_warning"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/rain"
+            app:layout_constraintBottom_toTopOf="@id/guideline" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="199dp" />
+            app:layout_constraintGuide_begin="500dp" />
 
         <TextView
             android:id="@+id/title_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="8dp"
             android:drawableEnd="@drawable/ic_red_warning"
             android:drawablePadding="15dp"
             android:fontFamily="@font/roboto_medium"
@@ -128,14 +151,13 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/last_update" />
+            app:layout_constraintTop_toBottomOf="@id/guideline" />
 
         <ImageView
             android:id="@+id/warning_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_warning"
             tools:srcCompat="@tools:sample/avatars" />
@@ -144,22 +166,28 @@
             android:id="@+id/warning_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/roboto_medium"
             android:text="The Very Hot Weather Warning is now in force. The public should beware of heatstroke and drink more water."
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/warning_icon" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/warning_icon"
+            app:layout_constraintBottom_toTopOf="@id/guideline2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
 
         <TextView
             android:id="@+id/title_astro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:drawableEnd="@drawable/ic_planet"
             android:drawablePadding="15dp"
@@ -168,50 +196,49 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/warning_info" />
+            app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
         <TextView
             android:id="@+id/sunrise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="31dp"
+            android:layout_marginStart="8dp"
             android:drawableStart="@drawable/ic_sunrise"
             android:drawablePadding="20dp"
             android:fontFamily="@font/roboto_medium"
             android:text="05:58"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            app:layout_constraintBottom_toTopOf="@+id/sunset"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_astro" />
+            app:layout_constraintTop_toBottomOf="@+id/title_astro"
+            app:layout_constraintBottom_toTopOf="@+id/sunset" />
 
         <TextView
             android:id="@+id/sunset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:drawableStart="@drawable/ic_sunset"
             android:drawablePadding="20dp"
             android:fontFamily="@font/roboto_medium"
+            android:text="18:59"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            android:text="18:59"
-            app:layout_constraintBottom_toTopOf="@+id/moonrise"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sunrise" />
+            app:layout_constraintTop_toBottomOf="@+id/sunrise"
+            app:layout_constraintBottom_toTopOf="@+id/moonrise" />
 
         <TextView
             android:id="@+id/moonrise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:drawableStart="@drawable/ic_moonrise"
             android:drawablePadding="20dp"
             android:fontFamily="@font/roboto_medium"
+            android:text="22:39"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            android:text="22:39"
             app:layout_constraintBottom_toTopOf="@+id/moonset"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sunset" />
@@ -220,26 +247,16 @@
             android:id="@+id/moonset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="8dp"
             android:drawableStart="@drawable/ic_moonset"
             android:drawablePadding="20dp"
             android:fontFamily="@font/roboto_medium"
+            android:text="10:32"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="32sp"
-            android:text="10:32"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moonrise" />
-
-        <TextView
-            android:id="@+id/moon_phrase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Moon Phase"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moonset" />
+            app:layout_constraintTop_toBottomOf="@+id/moonrise"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
