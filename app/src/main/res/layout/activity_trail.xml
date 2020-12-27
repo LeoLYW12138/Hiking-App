@@ -18,32 +18,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:contentDescription="Photo of the view from the trail"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/image_2" />
+            tools:srcCompat="@drawable/aberdeen_country_park" />
 
         <TextView
             android:id="@+id/trail_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Trail - where"
             android:textSize="36sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_img" />
+            app:layout_constraintTop_toBottomOf="@+id/view_img"
+            tools:text="Trail - where" />
+
+        <ImageButton
+            android:id="@+id/flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:background="@android:color/transparent"
+            android:scaleX="2"
+            android:scaleY="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_img"
+            tools:src="@drawable/ic_round_flag_24" />
 
         <TextView
             android:id="@+id/trail_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="A Part of ---- Trail"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/trail_title" />
+            app:layout_constraintTop_toBottomOf="@+id/trail_title"
+            tools:text="A Part of ---- Trail" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="331dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/details"
@@ -57,24 +81,24 @@
                 android:id="@+id/trail_difficulty"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
+                android:gravity="center_vertical"
                 android:text="@string/trail_difficulty"
                 android:textSize="16sp"
-                android:gravity="center_vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.iarcuschin.simpleratingbar.SimpleRatingBar
-                android:id="@+id/trail_rating"
+                android:id="@+id/trail_difficulty_data"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                app:srb_starSize="24dp"
-                app:srb_numberOfStars="5"
-                app:srb_rating="3.5"
-                app:srb_stepSize="0.5"
+                app:layout_constraintBottom_toBottomOf="@id/trail_difficulty"
+                app:layout_constraintStart_toStartOf="@+id/details_guideline"
                 app:srb_borderColor="@color/colorStar"
                 app:srb_fillColor="@color/colorStar"
-                app:layout_constraintBottom_toBottomOf="@id/trail_difficulty"
-                app:layout_constraintStart_toStartOf="@+id/details_guideline" />
+                app:srb_numberOfStars="5"
+                app:srb_starSize="24dp"
+                app:srb_stepSize="0.5"
+                tools:srb_rating="3.5" />
 
             <TextView
                 android:id="@+id/trail_length"
@@ -91,11 +115,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:paddingTop="8dp"
-                android:text="7.5km"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintBaseline_toBaselineOf="@id/trail_length"
-                app:layout_constraintStart_toStartOf="@+id/details_guideline" />
+                app:layout_constraintStart_toStartOf="@+id/details_guideline"
+                tools:text="7.5km" />
 
             <TextView
                 android:id="@+id/trail_duration"
@@ -112,11 +137,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:paddingTop="8dp"
-                android:text="2 hours"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintBaseline_toBaselineOf="@id/trail_duration"
-                app:layout_constraintStart_toStartOf="@+id/details_guideline" />
+                app:layout_constraintStart_toStartOf="@+id/details_guideline"
+                tools:text="2 hours" />
 
             <TextView
                 android:id="@+id/trail_region"
@@ -133,11 +159,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:paddingTop="8dp"
-                android:text="Hong Kong Island"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintBaseline_toBaselineOf="@id/trail_region"
-                app:layout_constraintStart_toStartOf="@+id/details_guideline" />
+                app:layout_constraintStart_toStartOf="@+id/details_guideline"
+                tools:text="Hong Kong Island" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/details_guideline"
@@ -165,9 +192,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="16dp"
             android:background="#54F677"
             android:orientation="vertical"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/get_there">
@@ -178,8 +205,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
-                android:textSize="16sp"
-                android:text="@string/start_point" />
+                android:text="@string/start_point"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/start_details"
@@ -187,7 +214,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/start_point"
                 android:textSize="16sp"
-                android:text='Take public transport to "Wan Chai Gap Road" bus stop. Pass Wan Chai Gap Park and walk along Aberdeen Reservoir Road for about 15 minutes to the start point.  New World First Bus (NWFB) routes - 15 and 15B' />
+                android:textColor="@color/black"
+                tools:text='Take public transport to "Wan Chai Gap Road" bus stop. Pass Wan Chai Gap Park and walk along Aberdeen Reservoir Road for about 15 minutes to the start point.  New World First Bus (NWFB) routes - 15 and 15B' />
         </RelativeLayout>
 
         <RelativeLayout
@@ -195,9 +223,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="16dp"
             android:background="#FF6464"
             android:orientation="vertical"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/start_point_layout">
@@ -208,8 +236,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
-                android:textSize="16sp"
-                android:text="@string/end_point" />
+                android:text="@string/end_point"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/end_details"
@@ -217,7 +245,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/end_point"
                 android:textSize="16sp"
-                android:text="Take public transport from Wong Nai Chung Gap.  Citybus routes - 6, 41A and 76" />
+                android:textColor="@color/black"
+                tools:text="Take public transport from Wong Nai Chung Gap.  Citybus routes - 6, 41A and 76" />
         </RelativeLayout>
 
 

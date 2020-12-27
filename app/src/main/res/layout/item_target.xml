@@ -27,6 +27,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+            android:id="@+id/flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleY="1.5"
+            android:scaleX="1.5"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            tools:src="@drawable/ic_round_flag_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/target_item_difficulty_text"
             android:layout_width="wrap_content"
@@ -35,11 +48,11 @@
             android:text="@string/trail_difficulty"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/simple_rating_bar"
+            app:layout_constraintBottom_toTopOf="@+id/target_item_difficulty"
             app:layout_constraintTop_toBottomOf="@+id/target_item_title" />
 
         <com.iarcuschin.simpleratingbar.SimpleRatingBar
-            android:id="@+id/simple_rating_bar"
+            android:id="@+id/target_item_difficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -57,7 +70,7 @@
             android:id="@+id/horizontalScrollView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="159dp"
+            android:layout_marginStart="170dp"
             android:fillViewport="true"
             android:paddingTop="5dp"
             android:scrollbars="none"
@@ -100,15 +113,6 @@
                     android:textAlignment="center"
                     android:textSize="15sp"
                     app:chipBackgroundColor="@color/colorTag3" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="chip4"
-                    android:textAlignment="center"
-                    android:textSize="15sp"
-                    app:chipBackgroundColor="@color/colorTag1" />
             </com.google.android.material.chip.ChipGroup>
 
         </HorizontalScrollView>

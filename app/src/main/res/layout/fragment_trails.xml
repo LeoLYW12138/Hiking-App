@@ -10,32 +10,33 @@
     <TextView
         android:id="@+id/trails_fragment_title"
         android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:text="Trails in"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/trails_recycler_view"
-        app:layout_constraintEnd_toStartOf="@id/trails_title_guideline"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/trails_title_guideline"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="216dp" />
-
-    <TextView
-        android:id="@+id/place_name"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:text="Shing Mun Country Park"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/trails_recycler_view"
+        android:padding="16dp"
+        android:text="Trails in Hong Kong"
+        android:textSize="42sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/trails_title_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/trails_recycler_view" />
+
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+    <!--        android:id="@+id/trails_title_guideline"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical"-->
+    <!--        app:layout_constraintGuide_begin="216dp" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/place_name"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="128dp"-->
+    <!--        android:text="Shing Mun Country Park"-->
+    <!--        android:textSize="25sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/trails_recycler_view"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/trails_title_guideline"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trails_recycler_view"

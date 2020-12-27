@@ -13,16 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import me.darkb.HikingApp.R;
 
 public class TrailsFragment extends Fragment {
-
-    private RecyclerView recyclerView;
+    private TrailsAdapter trailsAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trails, container, false);
-        recyclerView = view.findViewById(R.id.trails_recycler_view);
-        recyclerView.setAdapter(new TrailsAdapter());
+        RecyclerView recyclerView = view.findViewById(R.id.trails_recycler_view);
+        trailsAdapter = new TrailsAdapter();
+        recyclerView.setAdapter(trailsAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        trailsAdapter.reload();
     }
 }

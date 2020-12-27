@@ -14,7 +14,10 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import me.darkb.HikingApp.data.TrailsDatabase;
+
 public class MainActivity extends AppCompatActivity {
+    public static TrailsDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         AndroidThreeTen.init(this);
+
+        database = TrailsDatabase.getInstance(getApplicationContext());
     }
 
     @Override
