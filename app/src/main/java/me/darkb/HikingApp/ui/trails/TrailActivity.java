@@ -32,7 +32,6 @@ public class TrailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail);
 
-//        trail = (Trail) getIntent().getSerializableExtra("trail");
         int id = getIntent().getIntExtra("id", 0);
         trail = MainActivity.database.trailDao().getTrail(id);
 

@@ -5,8 +5,10 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 @Database(entities = {Trail.class}, version = 1)
+@TypeConverters({ListConverter.class})
 public abstract class TrailsDatabase extends RoomDatabase {
     private static TrailsDatabase INSTANCE;
 

@@ -91,6 +91,7 @@
                 android:id="@+id/trail_difficulty_data"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
+                app:srb_isIndicator="true"
                 app:layout_constraintBottom_toBottomOf="@id/trail_difficulty"
                 app:layout_constraintStart_toStartOf="@+id/details_guideline"
                 app:srb_borderColor="@color/colorStar"

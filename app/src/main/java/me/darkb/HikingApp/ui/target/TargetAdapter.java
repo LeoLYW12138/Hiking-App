@@ -1,5 +1,6 @@
 package me.darkb.HikingApp.ui.target;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
@@ -15,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 
 import java.util.ArrayList;
@@ -31,6 +34,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
         public TextView targetTitle;
         public SimpleRatingBar targetDifficulty;
         public ImageButton flag;
+        public ChipGroup chipGroup;
 
         public LinearLayout containerView;
 
@@ -41,6 +45,7 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
             targetTitle = v.findViewById(R.id.target_item_title);
             targetDifficulty = v.findViewById(R.id.target_item_difficulty);
             flag = v.findViewById(R.id.flag);
+            chipGroup = v.findViewById(R.id.chip_group);
 
             containerView.setOnClickListener(view -> {
                 Trail current = (Trail) containerView.getTag();
@@ -95,6 +100,28 @@ public class TargetAdapter extends RecyclerView.Adapter<TargetAdapter.TargetView
                     })
                     .setNegativeButton(android.R.string.cancel, null).show();
         });
+        String[] tags = current.getTags();
+        Context context = holder.chipGroup.getContext();
+        for (int i = 0; i < tags.length; i++) {
+            Chip chip = new Chip(context);
+            chip.setText(tags[i]);
+            chip.setChipBackgroundColorResource(context.getResources().getIdentifier(String.format("colorTag%d", i + 1), "color", context.getPackageName()));
+            chip.setChecked(true);
+            chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            chip.setTextSize(15);
+            chip.setCheckedIconVisible(false);
+            chip.setCloseIconVisible(false);
+            holder.chipGroup.addView(chip);
+        }
+//        android:layout_width="wrap_content"
+//        android:layout_height="wrap_content"
+//        android:checked="true"
+//        android:text="Family"
+//        android:textAlignment="center"
+//        android:textSize="15sp"
+//        app:chipBackgroundColor="@color/colorTag1"
+//        app:chipIconVisible="false"
+//        app:closeIconVisible="false"
 
     }
 

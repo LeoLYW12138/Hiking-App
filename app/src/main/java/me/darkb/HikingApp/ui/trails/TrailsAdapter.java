@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class TrailsAdapter extends RecyclerView.Adapter<TrailsAdapter.TrailsView
         public TextView trailTitle;
         public TextView trailSubtitle;
         public SimpleRatingBar trailDifficulty;
+        public ChipGroup chipGroup;
 
         public LinearLayout containerView;
 
@@ -41,11 +44,11 @@ public class TrailsAdapter extends RecyclerView.Adapter<TrailsAdapter.TrailsView
             trailTitle = v.findViewById(R.id.trail_item_title);
             trailSubtitle = v.findViewById(R.id.trail_item_subtitle);
             trailDifficulty = v.findViewById(R.id.trail_item_difficulty);
+            chipGroup = v.findViewById(R.id.chip_group);
 
             containerView.setOnClickListener(view -> {
                 Trail current = (Trail) containerView.getTag();
                 Intent intent = new Intent(view.getContext(), TrailActivity.class);
-//                intent.putExtra("trail", current);
                 intent.putExtra("id", current.getId());
                 view.getContext().startActivity(intent);
             });
@@ -58,10 +61,6 @@ public class TrailsAdapter extends RecyclerView.Adapter<TrailsAdapter.TrailsView
     }
 
     private void loadTrails() {
-//        trails.add(new Trail(R.drawable.aberdeen_country_park, "Aberdeen natural trail - Hong Kong Island", "Hong Kong Trail", 1.0f, 3, 1.2f, 1.0f, "Hong Kong Island"));
-//        trails.add(new Trail(R.drawable.amah_rock, "Hung Mui Kuk Natural Trail - Central New Territories", "Wilson Trail", 1.0f, 3, 1.3f, 1.0f, "Central New Territories"));
-//        trails.add(new Trail(R.drawable.grassy_hill, "MacLehose Trail (Section 7) - Central New Territories", "MacLehose Trail", 3.0f, 2, 6.2f, 2.5f, "Central New Territories"));
-//        trails.add(new Trail(R.drawable.lai_chi_wo, "Lai Chi Wo Natural Trail - North New Territories", "Natural Trail", 1.0f, 5, 1.2f, 1.0f, "North New Territories"));
         trails = MainActivity.database.trailDao().getAll();
         Log.d("TrailAdapter", "loaded trails");
         notifyDataSetChanged();
@@ -86,6 +85,19 @@ public class TrailsAdapter extends RecyclerView.Adapter<TrailsAdapter.TrailsView
         holder.trailSubtitle.setText(current.getSubtitle());
         holder.trailDifficulty.setRating(current.getDifficulty());
         holder.containerView.setTag(current);
+        String[] tags = current.getTags();
+        Context context1 = holder.chipGroup.getContext();
+        for (int i = 0; i < tags.length; i++) {
+            Chip chip = new Chip(context1);
+            chip.setText(tags[i]);
+            chip.setChipBackgroundColorResource(context1.getResources().getIdentifier(String.format("colorTag%d", i + 1), "color", context1.getPackageName()));
+            chip.setChecked(true);
+            chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            chip.setTextSize(15);
+            chip.setCheckedIconVisible(false);
+            chip.setCloseIconVisible(false);
+            holder.chipGroup.addView(chip);
+        }
     }
 
     @Override
